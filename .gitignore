@@ -1,0 +1,10 @@
+node_modules
+dist
+.DS_Store
+*.log
+.vscode
+.idea
+.pnpm-store
+.env.local
+.env.*.local
+docs

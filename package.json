@@ -1,0 +1,23 @@
+{
+  "name": "wujie-microfrontends",
+  "private": true,
+  "version": "1.0.0",
+  "description": "基于 Wujie + Vite + React 基座的微前端示例工程（含 React/Vue3 子应用）",
+  "scripts": {
+    "dev": "pnpm -r --parallel --filter \"./apps/*\" run dev",
+    "dev:main": "pnpm --filter main-app run dev",
+    "dev:react": "pnpm --filter react-subapp run dev",
+    "dev:vue": "pnpm --filter vue-subapp run dev",
+    "build": "pnpm -r --filter \"./apps/*\" run build",
+    "preview": "pnpm -r --parallel --filter \"./apps/*\" run preview"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.30",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.10"
+  },
+  "engines": {
+    "node": ">=18",
+    "pnpm": ">=8"
+  }
+}

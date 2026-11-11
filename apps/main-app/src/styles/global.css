@@ -1,0 +1,162 @@
+/* 全局样式：CSS Reset + 基础布局变量 */
+:root {
+  --header-height: 60px;
+  --sider-width: 200px;
+  --subnav-height: 48px;
+  --tabs-height: 40px;
+  --primary: #2f7cff;
+  --primary-dark: #1e69e6;
+  --bg-layout: #f0f2f5;
+  --bg-sider: #ffffff;
+  --bg-content: #ffffff;
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --border-color: #e5e7eb;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  font-size: 14px;
+  color: var(--text-primary);
+  background: var(--bg-layout);
+}
+
+a { color: inherit; text-decoration: none; }
+ul, ol { list-style: none; }
+button { cursor: pointer; border: none; background: transparent; font-family: inherit; }
+
+/* ---- 骨架布局 ---- */
+.app-layout { display: flex; flex-direction: column; height: 100vh; }
+.app-body { display: flex; flex: 1; min-height: 0; }
+.app-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--bg-layout);
+}
+.app-content-main {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: 16px;
+}
+
+/* Header */
+.app-header {
+  height: var(--header-height);
+  background: linear-gradient(90deg, #1e69e6 0%, #2f7cff 100%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  flex-shrink: 0;
+}
+.app-header .logo { display: flex; align-items: center; gap: 10px; font-size: 18px; font-weight: 600; }
+.app-header .logo-mark {
+  width: 32px; height: 32px; border-radius: 6px;
+  background: rgba(255,255,255,0.18);
+  display: inline-flex; align-items: center; justify-content: center;
+  font-weight: 700;
+}
+.app-header .header-right { margin-left: auto; display: flex; align-items: center; gap: 16px; }
+.app-header .avatar {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 13px;
+}
+
+/* Sider */
+.app-sider {
+  width: var(--sider-width);
+  background: var(--bg-sider);
+  border-right: 1px solid var(--border-color);
+  flex-shrink: 0;
+  overflow-y: auto;
+}
+.menu-item {
+  height: 44px;
+  padding: 0 16px;
+  display: flex; align-items: center; gap: 10px;
+  cursor: pointer; user-select: none;
+  border-left: 3px solid transparent;
+  color: var(--text-primary);
+}
+.menu-item:hover { background: #f3f7ff; }
+.menu-item.active {
+  background: #e8f1ff;
+  border-left-color: var(--primary);
+  color: var(--primary);
+  font-weight: 500;
+}
+.menu-item .icon { width: 18px; text-align: center; font-size: 16px; }
+.menu-item .arrow { margin-left: auto; font-size: 10px; color: var(--text-secondary); }
+
+/* Tabs */
+.tabs-bar {
+  height: var(--tabs-height);
+  background: var(--bg-content);
+  border-bottom: 1px solid var(--border-color);
+  display: flex; align-items: center;
+  padding: 0 8px;
+  gap: 4px;
+}
+.tab-item {
+  display: inline-flex; align-items: center; gap: 6px;
+  height: 28px; padding: 0 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: #fafafa;
+  font-size: 13px;
+  cursor: pointer;
+}
+.tab-item.active { background: var(--primary); border-color: var(--primary); color: #fff; }
+.tab-close { opacity: 0.7; &:hover { opacity: 1; } }
+
+/* SubNav */
+.subnav-bar {
+  height: var(--subnav-height);
+  background: var(--bg-content);
+  border-bottom: 1px solid var(--border-color);
+  display: flex; align-items: center;
+  padding: 0 24px;
+  gap: 32px;
+}
+.subnav-item {
+  height: var(--subnav-height);
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 0 4px;
+  font-size: 14px;
+  color: var(--text-primary);
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+}
+.subnav-item:hover { color: var(--primary); }
+.subnav-item.active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+  font-weight: 500;
+}
+
+/* 微应用容器 */
+.subapp-container {
+  width: 100%;
+  height: 100%;
+  min-height: calc(100vh - var(--header-height) - var(--tabs-height) - var(--subnav-height) - 32px);
+}
+.subapp-placeholder {
+  height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
